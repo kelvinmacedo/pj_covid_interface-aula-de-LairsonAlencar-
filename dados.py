@@ -2,6 +2,9 @@
 class funcao:
     def __init__(self):
         pass
+
+# analise de quantas pessoas do genero masculino e feminino se vacinaram.
+
     def genero_m_f():
         arq = open("entrada.txt","r")
         linhas = arq.readlines()
@@ -21,6 +24,8 @@ class funcao:
                 Porc_masc = (100-(fem*100/div))
                 resultado = f"Percetual de genero feminino {Porc_fem}%, genero masculino {Porc_masc}%"
         return resultado
+
+# analise de quantas pessoas do genero masculino e feminino se vacinaram, separado por virgula.
 
     def genero_virgula():
         arq = open("entrada.txt","r")
@@ -43,6 +48,8 @@ class funcao:
         res1 = str (res1).replace(".",",")
         resultado = f" Publico feminino {res}%\n Publico masculino {res1}%."
         return resultado
+
+# Eficacia da vicina em jovem , adultos e idosos.
 
     def jovem_adulto_idoso():
         arq = open("entrada.txt","r")
@@ -86,6 +93,8 @@ class funcao:
         resIdoso = (idosoA * 100)/ idoso
         resultado = f" Eficácia da vacine em jovens {resJovem}%\n Eficácia da vacine em adultos {resAdulto:.2f}%\n Eficácia da vacine em idosos {resIdoso:.2f}%."
         return resultado
+
+# Eficacia entre vacina e placebo.
 
     def vacina_placebo():
         arq = open("entrada.txt", "r")
