@@ -5,30 +5,30 @@ class funcao:
 
 # analise de quantas pessoas do genero masculino e feminino se vacinaram.
 
-    def genero_m_f():
-        arq = open("entrada.txt","r")
-        linhas = arq.readlines()
+    def genero_masclino_feminino():
+        arquivo = open ( "entrada.txt" , "r" )
+        linhas = arquivo.readlines()
         dados = []
         for l in linhas:
             lista = l.split(",")
             dados.append(lista)
 
         dados[0] = dados[0][0].replace("\n","")
-        div = int(dados[0])
-        fem = int(0)
+        quantidade_pessoas = int (dados[0])
+        feminino = int (0)
         for i in dados:
             if "f" in i:
-                fem1 = i.count("f")
-                fem = fem + fem1
-                Porc_fem = (fem*100/div)
-                Porc_masc = (100-(fem*100/div))
-                resultado = f"Percetual de genero feminino {Porc_fem}%, genero masculino {Porc_masc}%"
+                feminino1 = i.count("f")
+                feminino = feminino + feminino1
+                Porcentagem_feminino = ( feminino * 100 / quantidade_pessoas )
+                Porcentagem_mascasculino = ( 100 - ( feminino * 100 / quantidade_pessoas ))
+                resultado = f"Percetual de genero feminino {Porcentagem_feminino}%, genero masculino {Porcentagem_mascasculino}%"
         return resultado
 
 # analise de quantas pessoas do genero masculino e feminino se vacinaram, separado por virgula.
 
     def genero_virgula():
-        arq = open("entrada.txt","r")
+        arq = open ( "entrada.txt" , "r" )
         linhas = arq.readlines()
         dados = []
         for l in linhas:
@@ -36,39 +36,39 @@ class funcao:
             dados.append(lista)
 
         dados[0] = dados[0][0].replace("\n","")
-        div = int(dados[0])
-        fem = int(0)
+        quantidade_pessoas = int (dados[0])
+        feminino = int (0)
         for i in dados:
             if "f" in i:
-                fem1 = i.count("f")
-                fem = fem + fem1
-        res = float(fem*100/div)
-        res1 = float(100-res)
-        res = str (res).replace(".",",")
-        res1 = str (res1).replace(".",",")
-        resultado = f" Publico feminino {res}%\n Publico masculino {res1}%."
+                feminino1 = i.count("f")
+                feminino = feminino + feminino1
+        porcentagem_feminino = float ( feminino * 100 / quantidade_pessoas )
+        porcentagem_masculino = float ( 100 - porcentagem_feminino )
+        porcentagem_feminino = str (porcentagem_feminino).replace(".",",")
+        porcentagem_masculino = str (porcentagem_masculino).replace(".",",")
+        resultado = f" Publico feminino {porcentagem_feminino}%\n Publico masculino {porcentagem_masculino}%."
         return resultado
 
 # Eficacia da vicina em jovem , adultos e idosos.
 
     def jovem_adulto_idoso():
-        arq = open("entrada.txt","r")
+        arq = open ( "entrada.txt" , "r" )
         linhas = arq.readlines()
         dados = []
         for l in linhas:
             lista = l.split(",")
             dados.append(lista)
         dados[0] = dados[0][0].replace("\n","")
-        div = int(dados[0])
+        quatidade_pessoas = int (dados[0])
         jovem = 0
         adulto = 0
         idoso = 0
-        for i in range(1, div + 1,1):
+        for i in range( 1, quatidade_pessoas + 1, 1 ):
             idade = dados[i]
             valor = idade [1]
-            if 0 < int(valor) <= 19:
+            if 0 < int ( valor ) <= 19:
                 jovem += 1
-            elif 20 < int(valor) <= 59:
+            elif 20 < int ( valor ) <= 59:
                 adulto += 1
             else:
                 idoso += 1
@@ -76,27 +76,27 @@ class funcao:
         jovemA = 0
         adultoA = 0
         idosoA = 0
-        for e in range ( 1 , div + 1, 1):
+        for e in range ( 1 , quatidade_pessoas + 1, 1 ):
             nao = dados[e]
-            efiGen = [nao[1],nao[3]]
-            if efiGen[1]== "n\n":
-                eficasGenero.append(efiGen[0])
+            eficasGenero1 = [nao[1], nao[3]]
+            if eficasGenero1[1] == "n\n":
+                eficasGenero.append(eficasGenero1[0])
         for a in eficasGenero:
-            if 0 < int(a) <= 19:
+            if 0 < int (a) <= 19:
                 jovemA += 1
-            elif 20 <= int(a) <= 59:
+            elif 20 <= int (a) <= 59:
                 adultoA += 1
             else:
                 idosoA += 1
-        resJovem = (jovemA * 100)/jovem
-        resAdulto = (adultoA * 100)/adulto
-        resIdoso = (idosoA * 100)/ idoso
-        resultado = f" Eficácia da vacine em jovens {resJovem}%\n Eficácia da vacine em adultos {resAdulto:.2f}%\n Eficácia da vacine em idosos {resIdoso:.2f}%."
+        resultado_Jovem = ( jovemA * 100 ) / jovem
+        resultado_Adulto = ( adultoA * 100 ) / adulto
+        resultado_Idoso = ( idosoA * 100 ) / idoso
+        resultado = f" Eficácia da vacine em jovens {resultado_Jovem}%\n Eficácia da vacine em adultos {resultado_Adulto:.2f}%\n Eficácia da vacine em idosos {resultado_Idoso:.2f}%."
         return resultado
 
 # Eficacia entre vacina e placebo.
 
-    def vacina_placebo():
+    def eficacia_vacina():
         arq = open("entrada.txt", "r")
         linhas = arq.readlines()
         dados = []
@@ -104,21 +104,21 @@ class funcao:
             lista = l.split(",")
             dados.append(lista)
         dados[0] = dados[0][0].replace("\n", "")
-        div = int(dados[0])
-        infVacina = 0
-        infPlacebo = 0
-        for i in range(1, div+1 , 1):
-            cont = dados[i]
-            contra = [cont[2],cont[3]]
-            if contra[0]== "p" and contra[1] == "s\n":
-                infPlacebo += 1
-            elif contra[0] == "v" and contra[1] == "s\n":
-                infVacina += 1
-        resEficacia = 100 * (infPlacebo - infVacina)/infPlacebo
-        resultado = f"A eficácia da vacina e de {resEficacia}%"
+        quantidade_pessoas = int(dados[0])
+        eficacia_vacina = 0
+        eficacia_placebo = 0
+        for i in range (1, quantidade_pessoas + 1 , 1):
+            interador = dados[i]
+            contraiu = [interador[2],interador[3]]
+            if contraiu[0]== "p" and contraiu[1] == "s\n":
+                eficacia_placebo += 1
+            elif contraiu[0] == "v" and contraiu[1] == "s\n":
+                eficacia_vacina += 1
+        resultado_eficacia = 100 * ( eficacia_placebo - eficacia_vacina ) / eficacia_placebo
+        resultado = f"A eficácia da vacina e de {resultado_eficacia}%"
         return resultado
 
-    def eficacia_m_f():
+    def eficacia_masculino_feminino():
         arq = open("entrada.txt", "r")
         linhas = arq.readlines()
         dados = []
@@ -126,17 +126,17 @@ class funcao:
             lista = l.split(",")
             dados.append(lista)
         dados[0] = dados[0][0].replace("\n", "")
-        div = int(dados[0])
-        mascNeg = int(0)
-        femNeg = int(0)
-        for i in range (1,div + 1,1):
+        quantidade_pessoas = int (dados[0])
+        masculino_negativo = int (0)
+        feminino_Negativo = int (0)
+        for i in range (1, quantidade_pessoas + 1, 1):
             contraiu = dados[i]
-            sim = contraiu[0]+contraiu[3]
-            if sim == "m"+"n\n":
-                mascNeg = mascNeg + 1
-            elif sim == "f"+"n\n":
-                femNeg = femNeg + 1
-        resFem =(femNeg*100/div)
-        resMasc =(mascNeg*100/div)
-        resultado = f"Eficacia no publico feminino {resFem}%\nEficacia no publico masculino {resMasc}%."
+            sim = contraiu[0] + contraiu[3]
+            if sim == "m" + "n\n":
+                masculino_negativo += 1
+            elif sim == "f" + "n\n":
+                feminino_Negativo += 1
+        resultado_Feminino = ( feminino_Negativo * 100 / quantidade_pessoas )
+        resultado_Masculino = (masculino_negativo * 100 / quantidade_pessoas )
+        resultado = f"Eficacia no publico feminino { resultado_Feminino }%\nEficacia no publico masculino { resultado_Masculino }%."
         return resultado
